@@ -6,6 +6,7 @@
 >  主要实现了《知乎日报》App的首页，详情页，评论页，专题页，抽屉页，登录页，主编页等页面的绘制与数据处理。（目前仅实现了Android端的适配。。）几乎90%+的代码在ReactNative端编写。
 
 - 框架
+
 项目使用的ReactNative版本为0.45.1，遵循ES6语法特性。
 本着学习的目的，尽管项目不是大型项目，但还是采用了Redux架构，加深对Redux架构的理解，并且为之后的拓展打基础。并且采用了redux-thunk 中间件，来更加灵活的处理各类的异步操作。
 
@@ -35,6 +36,7 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 
 （默默的感谢下该知乎日报API的提供者，虽说接口不是很多，但正是有了这些API接口，才使得这个rn项目至少像那么回事，有动力写下去啦😉，有需要的可以网上搜搜或者联系我。）
 #### ScreenShot
+（截图图片压缩了，效果不是很清晰，可直接安装项目根目录下apk运行）
 ---
 
 ![欢迎页  首页](http://upload-images.jianshu.io/upload_images/1948083-dad44eebcedaf8d0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
