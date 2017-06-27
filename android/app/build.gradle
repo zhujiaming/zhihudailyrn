@@ -123,6 +123,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.MySiginConfig
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
