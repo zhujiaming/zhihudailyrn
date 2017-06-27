@@ -36,8 +36,8 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 
 （默默的感谢下该知乎日报API的提供者，虽说接口不是很多，但正是有了这些API接口，才使得这个rn项目至少像那么回事，有动力写下去啦😉，有需要的可以网上搜搜或者联系我。）
 #### ScreenShot
-（截图图片压缩了，效果不是很清晰，可直接安装项目根目录下apk运行）
 ---
+（截图图片压缩了，效果不是很清晰，可直接安装项目根目录下apk运行）
 
 ![欢迎页  首页](http://upload-images.jianshu.io/upload_images/1948083-dad44eebcedaf8d0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
