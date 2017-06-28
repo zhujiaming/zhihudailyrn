@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="splashTheme" parent="Theme.ReactNative.AppCompat.Light.NoActionBar.FullScreen">
+
+    </style>
+
 </resources>

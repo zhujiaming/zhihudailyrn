@@ -3,8 +3,8 @@
  */
 import {StackNavigator, DrawerNavigator, NavigationActions} from 'react-navigation';
 import React, {Component} from 'react';
-import {View, Modal, Text, DeviceEventEmitter} from 'react-native';
-import {CusModal} from 'kit';
+import {View, Modal, Text, DeviceEventEmitter,StatusBar} from 'react-native';
+import {CusModal,CommonStyles} from 'kit';
 import PageMain from './main/index';
 import MainDraw  from './draw/index';
 import NewsDetail  from './detail/index';
@@ -68,6 +68,11 @@ class AppRoute extends Component {
 
     render() {
         return (<View style={{flex: 1}}>
+            <StatusBar
+                backgroundColor={CommonStyles.appColor}
+                barStyle="light-content"
+                networkActivityIndicatorVisible={true}
+            />
             <Navigator onNavigationStateChange={(prevState, newState, action) => {
                 if (__DEV__) {
                     console.log('******************************');
