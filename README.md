@@ -5,6 +5,8 @@
 主要目的为学习ReactNative，掌握其API使用及原理等知识。
 >  主要实现了《知乎日报》App的首页，详情页，评论页，专题页，抽屉页，登录页，主编页等页面的绘制与数据处理。（目前仅实现了Android端的适配。。）几乎90%+的代码在ReactNative端编写。
 
+
+
 - 框架
 
 项目使用的ReactNative版本为0.45.1，遵循ES6语法特性。
@@ -78,6 +80,7 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 ---
 1. clone the repo
 > git clone https://git.oschina.net/null_711_9174/zhihudailyrn.git
+
 >cd zhihudailyrn
 
 2. install dependencies 
@@ -87,7 +90,11 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 > react-native run-android
 
 #### 最后
-由于本人从事的是Android开发工作，所以目前仅适配了Android端，近期会在IOS端做些工作，顺便学习下IOS的基础开发。
+
+#####    觉得还行可以给个 star 鼓励下哦  (￣▽￣)~*
+
+由于擅长Android开发，加上最近并行其他项目，所以目前仅适配了Android端，近期会在IOS端做些工作，顺便学习下IOS的基础开发。
+
 项目中还有很多问题和待优化的地方，我会持续更新这个项目。
 如果发现有问题的地方或者建议等，很希望能告知联系，大家相互学习，共同进步呀😉。
 
