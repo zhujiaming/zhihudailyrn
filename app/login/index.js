@@ -33,7 +33,8 @@ class Login extends PureComponent {
     }
 
     renderContent() {
-        return <View style={{backgroundColor: '#017AD5', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        return <View style={{backgroundColor: '#fff', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Image source={require('../imgs/bg_blue_sky2.png')} style={{...StyleSheet.absoluteFillObject, flex: 1}}/>
             <Image source={require('../imgs/splash_logo.png') } style={{width: 180, height: 50}}
                    resizeMode={'contain'}/>
             <Text style={{color: '#D0F1FF', marginTop: 80, marginBottom: 30, fontSize: 18}}>使用微博登录</Text>
