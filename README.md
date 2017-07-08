@@ -79,6 +79,7 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 #### 安装配置
 ---
 1. clone the repo
+
 > git clone https://git.oschina.net/null_711_9174/zhihudailyrn.git
 
 >cd zhihudailyrn
