@@ -23,6 +23,7 @@ class PageMainDaily extends PureComponent {
     static defaultProps = {
         themeData: null,
         isRefreshing: false,
+        nightMode:false,
     }
 
     constructor(props) {
@@ -40,8 +41,9 @@ class PageMainDaily extends PureComponent {
 
     }
     render() {
-        return (<View style={styles.container}>
+        return (<View style={[styles.container,{backgroundColor:this.props.nightMode?'#343434':'#F3F3F3'}]}>
             <Header
+                nightMode={this.props.nightMode}
                 renderLeft={this.renderTopBarLeft}
                 renderRight={this.renderTopBarRight}
             />
@@ -51,13 +53,14 @@ class PageMainDaily extends PureComponent {
 
     renderContent() {
         let dataSource = this.props.themeData.stories;
+        let nightMode = this.props.nightMode;
         if (dataSource) {
             return (
                 <FlatList
                     ListHeaderComponent={this.renderListHeader}
                     onRefresh={this._onRefresh}
                     refreshing={this.props.isRefreshing}
-                    renderItem={({item}) => <ListItem data={item} navigation={this.props.navigation}/>}
+                    renderItem={({item}) => <ListItem data={item} navigation={this.props.navigation} nightMode={nightMode}/>}
                     getItemLayout={(data, index) => (
                         {length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index}
                     )}
@@ -131,6 +134,7 @@ class PageMainDaily extends PureComponent {
     renderListHeader() {
         let headImgUri = this.props.themeData.image;
         let headTitle = this.props.themeData.description;
+        let nightMode = this.props.nightMode;
         return (<View style={styles.listHeadStyle}>
             <View style={{backgroundColor: '#4A4A4A'}}>
                 <Image style={{width: screenWidth, height: listHeadHeight}}
@@ -144,7 +148,8 @@ class PageMainDaily extends PureComponent {
                     marginLeft: 10,
                     marginTop: 15,
                     marginBottom: 15,
-                    fontSize: 15
+                    fontSize: 15,
+                    color:nightMode?'#BEBEBE':'#707070'
                 }}>主编</Text>
                 <TouchableOpacity style={{flexDirection: 'row'}} activeOpacity={0.9} onPress={() => {
                     this.props.navigation.navigate('PageEditList', {editors: this.props.themeData.editors});

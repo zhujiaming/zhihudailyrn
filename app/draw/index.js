@@ -42,13 +42,14 @@ class MainDraw extends PureComponent {
     _renderItem(item) {
         let selectedItems = [13,12,3];
         let isContains = false;
+        let nightMode = this.props.nightMode;
         selectedItems.map((j,index)=>{if(j===item.item.id ){isContains=true;}
         });
-        return (<TouchableOpacity style={{height: 50, alignItems: 'center', flexDirection: 'row'}} activeOpacity={0.9}
+        return (<TouchableOpacity style={{height: 50, alignItems: 'center', flexDirection: 'row',backgroundColor:nightMode?'#343434':'#fff'}} activeOpacity={0.9}
                                   onPress={() => {
                                       this._closeAndChangeTheme(item.item.id);
                                   }}>
-            <Text style={{color: '#000', fontSize: 16, margin: 13}}>{item.item.name}</Text>
+            <Text style={{color: nightMode?'#999999':'#000', fontSize: 16, margin: 13}}>{item.item.name}</Text>
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
                 <Image style={{width: 15, height: 15, marginRight: 45}} source={isContains?require('../imgs/menu_arrow.png'):require('../imgs/menu_follow.png')}
                        resizeMode='stretch'/>
@@ -57,13 +58,14 @@ class MainDraw extends PureComponent {
     }
 
     _renderTopView() {
-        return (<View style={styles.topView}>
+        let nightMode = this.props.nightMode;
+        return (<View style={[styles.topView,{backgroundColor:nightMode?CommonStyles.appColorNight:CommonStyles.appColor}]}>
             <TouchableOpacity style={[styles.topView_item, {height: 52, alignItems: 'center'}]} activeOpacity={0.7}
                               onPress={() => {
                                   this.props.navigation.navigate('PageLogin');
                               }}>
                 <Image style={{width: 34, height: 34, margin: 15}} source={require('../imgs/menu_avatar.png')}/>
-                <Text style={{fontSize: 17, color: '#fff'}}>请登录</Text>
+                <Text style={{fontSize: 17, color: nightMode?'#999999':'#fff'}}>请登录</Text>
             </TouchableOpacity>
             <View style={[styles.topView_item, {
                 flex: 1,
@@ -77,7 +79,7 @@ class MainDraw extends PureComponent {
                                   }}>
                     <Image style={{width: 30, height: 30, margin: 13}} resizeMode='cover'
                            source={require('../imgs/favorites.png')}/>
-                    <Text style={{fontSize: 15, color: '#fff', fontWeight: 'bold'}}>我的收藏</Text>
+                    <Text style={{fontSize: 15, color: nightMode?'#666666':'#fff', fontWeight: 'bold'}}>我的收藏</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={{flex: 1, flexDirection: 'row', height: 40, alignItems: 'center'}}
                                   activeOpacity={0.7}
@@ -86,14 +88,15 @@ class MainDraw extends PureComponent {
                                   }}>
                     <Image style={{width: 30, height: 30, margin: 13}} resizeMode='cover'
                            source={require('../imgs/download.png')}/>
-                    <Text style={{fontSize: 15, color: '#fff', fontWeight: 'bold'}}>离线下载</Text>
+                    <Text style={{fontSize: 15, color: nightMode?'#666666':'#fff', fontWeight: 'bold'}}>离线下载</Text>
                 </TouchableOpacity>
             </View>
         </View>);
     }
 
     _renderMiddleView() {
-        return (<TouchableOpacity style={styles.middleView} activeOpacity={0.7} onPress={() => {
+        let nightMode = this.props.nightMode;
+        return (<TouchableOpacity style={[styles.middleView,{backgroundColor:nightMode?'#2C2C2C':'#f0f0f0'} ]} activeOpacity={0.7} onPress={() => {
             this._closeAndChangeTheme('home');
         }}>
             <Image style={{width: 38, height: 38, marginLeft: 15, marginRight: 10}} resizeMode='cover'
@@ -139,6 +142,7 @@ const styles = StyleSheet.create({
 });
 export default connect((state) => {
     return {
-        data: state.mainDrawStore
+        data: state.mainDrawStore,
+        nightMode:state.mainStore.nightMode
     }
 })(MainDraw);

@@ -86,8 +86,9 @@ let Utils = {
         return this.dateToDateStr(this.getBeforeDate(this.dateStrToDate(dateStr)));
     },
 
-    getHtml(body, cssLink){
-        return `<!DOCTYPE html> <html lang="en"> <head><meta charset="UTF-8"><link rel="stylesheet" href="${cssLink}" type="text/css" /></head><body><div style="height:${APPBAR_HEIGHT}px"></div>${body}</body></html>`;
+    getHtml(body, cssLink,nightMode=false){
+        let content = nightMode?`<div class="night">${body}</div>`:body;
+        return `<!DOCTYPE html> <html lang="en"> <head><meta charset="UTF-8"><link rel="stylesheet" href="${cssLink}" type="text/css" /></head><body><div style="height:${APPBAR_HEIGHT}px"></div>${content}</body></html>`;
     }
     /*getHtml(body, cssLink,headImgUrl){
         return `<!DOCTYPE html> <html lang="en"> <head><meta charset="UTF-8"><link rel="stylesheet" href="${cssLink}" type="text/css" /></head><body><div style="height:${APPBAR_HEIGHT}px"></div>${body}</body></html>`

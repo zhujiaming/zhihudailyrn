@@ -12,11 +12,12 @@ const initalState = {
     dataSource: [],
     renderType: 'home',
     themeData: null,
+    nightMode: false
 };
 
 export function mainReducer(state = initalState, action) {
     if (__DEV__)
-    console.log('reducer====>' + action.type);
+        console.log('reducer====>' + action.type);
     switch (action.type) {
         case actionTypes.ACTION_START_REFRESH:
             return {
@@ -52,10 +53,10 @@ export function mainReducer(state = initalState, action) {
             };
         case actionTypes.ACTION_END_LOAD_NEXT_PAGE:
             if (__DEV__)
-            console.log("合并前的dataSouree:", state.dataSource);
+                console.log("合并前的dataSouree:", state.dataSource);
             state.dataSource.push({data: action.data.stories, key: action.data.date, date: action.data.date});
             if (__DEV__)
-            console.log("合并后的dataSouree:", state.dataSource);
+                console.log("合并后的dataSouree:", state.dataSource);
 
             //dataSource date时间处理
             state.dataSource.forEach((item, index, input) => {
@@ -93,6 +94,13 @@ export function mainReducer(state = initalState, action) {
 
             return {};
 
+        case actionTypes.ACTION_CHANGE_NIGHT_MODE:
+            let nightMode = !state.nightMode;
+            return {
+                ...state,
+                nightMode
+            }
+
         default:
             return {...state};
     }
@@ -106,6 +114,7 @@ export const actionTypes = {
     ACTION_START_LOAD_NEXT_PAGE: 'start_load_next_page',
     ACTION_END_LOAD_NEXT_PAGE: 'end_load_next_page',
     ACTION_RENDER_TYPE: 'main:render_type',
+    ACTION_CHANGE_NIGHT_MODE: 'main:change_night_mode',
 };
 /**
  * getLasted缓存策略：先加载网络数据，如果网络错误，则加载缓存数据，如果网络正常，则更新缓存数据
@@ -114,12 +123,12 @@ export const actionTypes = {
 export function action_getLastedNews() {
     return async (dispatch) => {
         dispatch({type: actionTypes.ACTION_START_REFRESH});
-        let responseJson={};
+        let responseJson = {};
         try {
             responseJson = await  getLastedNews();
             storage.save({
                 key: 'home',
-                id:'lasted',
+                id: 'lasted',
                 data: responseJson,
             });
         } catch (err) {

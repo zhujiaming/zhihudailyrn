@@ -90,15 +90,19 @@ class AppRoute extends Component {
     }
 
     componentDidMount() {
-        this.subscription = DeviceEventEmitter.addListener('modalDidChanged', (modalProps) => {
+        this.modalDidChangedListenner = DeviceEventEmitter.addListener('modalDidChanged', (modalProps) => {
             this.setState({
                 modalProps: modalProps,
             });
         });
+        this.statusBarNightModeListenner = DeviceEventEmitter.addListener('statusBarDidChanged',(nightMode)=>{
+            StatusBar.setBackgroundColor(nightMode?'#212121':'rgb(27,163,234)');
+        })
     }
 
     componentWillUnmount() {
-        this.subscription.remove();
+        this.modalDidChangedListenner.remove();
+        this.statusBarNightModeListenner.remove();
     }
 }
 

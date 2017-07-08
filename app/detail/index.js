@@ -14,10 +14,10 @@ import {
     ToastAndroid,
     PixelRatio,
     InteractionManager,
-    DeviceEventEmitter
+    DeviceEventEmitter,
 } from 'react-native';
 import Svg, {LinearGradient, Rect, Defs, Stop} from 'react-native-svg';
-import {Header, CommonStyles, CusWebView} from 'kit';
+import {Header, CommonStyles, CusWebView,Loading} from 'kit';
 import {aciton_getDetailNewsData, aciton_getDetailNewsExtra} from './rd';
 import  AnimateHeadView from './animateheadview';
 
@@ -44,7 +44,7 @@ class NewsDetail extends PureComponent {
     componentDidMount() {
         // this.props.dispatch(aciton_getDetailNewsData());
         InteractionManager.runAfterInteractions(() => {
-            this.props.dispatch(aciton_getDetailNewsData(this.props.navigation.state.params.data.id));
+            this.props.dispatch(aciton_getDetailNewsData(this.props.navigation.state.params.data.id,this.props.nightMode));
             this.props.dispatch(aciton_getDetailNewsExtra(this.props.navigation.state.params.data.id));
         });
     }
@@ -84,7 +84,7 @@ class NewsDetail extends PureComponent {
         let storeId = this.props.newDetailStore.newsData.id;
         let isSameNews = targetId === storeId;
         return (<View style={styles.container}>
-            {isSameNews ? this.renderContent() : null}
+            {isSameNews ? this.renderContent() : <Loading showLoading={true}/>}
             {isSameNews && this.props.newDetailStore.newsData.image ? this.renderCoverHeader() : null}
             {this.renderHeader(isSameNews)}
         </View>);
@@ -198,9 +198,11 @@ class NewsDetail extends PureComponent {
         let extrasData = this.props.newDetailStore.extrasData;
         let comments = extrasData.comments;
         let popularity = extrasData.popularity;
+        let nightMode= this.props.nightMode;
 
         return (<AnimateHeadView h={CommonStyles.appBarHeight} ref='headView'
                                  style={{...StyleSheet.absoluteFillObject}}><View ><Header
+            nightMode = {nightMode}
             renderLeft={() => [<TouchableOpacity key={'l1'} onPress={() => {
                 this.props.navigation.goBack();
             }}>
@@ -290,5 +292,6 @@ const styles = StyleSheet.create({
 export default connect((state) => {
     return {
         newDetailStore: state.newDetailStore,
+        nightMode:state.mainStore.nightMode,
     }
 })(NewsDetail);

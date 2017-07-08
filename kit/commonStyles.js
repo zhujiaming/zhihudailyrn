@@ -7,6 +7,7 @@ import ExtraDimensions from 'react-native-extra-dimensions-android';
 
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56; //topBar的高度
 const APPBAR_BACKGROUND_COLOR = 'rgb(27,163,234)';   //topBar的背景色
+const APPBAR_BACKGROUND_COLOR_NIGHT = '#212121';   //topBar的背景色
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : ExtraDimensions.get('STATUS_BAR_HEIGHT');
 
 const CommonStyles = {
@@ -18,6 +19,8 @@ const CommonStyles = {
     SOFT_MENU_BAR_HEIGHT : Platform.OS === 'ios' ?0:ExtraDimensions.get('SOFT_MENU_BAR_HEIGHT'),//虚拟按键高度
 
     appColor: APPBAR_BACKGROUND_COLOR,
+
+    appColorNight: APPBAR_BACKGROUND_COLOR_NIGHT,
 
     topBarIconStyle: {
         width: 30,

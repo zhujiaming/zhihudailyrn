@@ -45,12 +45,15 @@ class PageMain extends PureComponent {
         this.menuItems =[{
             text: '夜间模式',
             click: () => {
-                ToastAndroid.show('暂不支持', ToastAndroid.SHORT);
+                let currentMode = this.props.mainStore.nightMode;
+                this.props.dispatch({type: 'main:change_night_mode'});
+                this.menuItems[0].text = currentMode?'夜间模式':'日间模式';
+                DeviceEventEmitter.emit('statusBarDidChanged',!currentMode);
             }
         }, {
             text: '设置选项',
             click: () => {
-                ToastAndroid.show('', ToastAndroid.SHORT);
+                ToastAndroid.show('5秒后有惊喜', ToastAndroid.SHORT);
             }
         }];
     }
@@ -86,14 +89,16 @@ class PageMain extends PureComponent {
 
     render() {
         let renderType = this.props.mainStore.renderType;
+        let nightMode = this.props.mainStore.nightMode;
         switch (renderType) {
             case 'theme':
-                return <PageMainDaily themeData={this.props.mainStore.themeData} navigation={this.props.navigation}/>;
+                return <PageMainDaily themeData={this.props.mainStore.themeData} navigation={this.props.navigation} nightMode ={nightMode}/>;
             default:
-                return (<View style={styles.container}>
+                return (<View style={[styles.container,{backgroundColor:nightMode?'#343434':'#F3F3F3'}]}>
                     <Header
                         renderLeft={this.renderTopBarLeft}
                         renderRight={this.renderTopBarRight}
+                        nightMode={nightMode}
                     />
                     {this.renderContent()}
                    {/* {this.renderShowMore()}*/}
@@ -120,6 +125,7 @@ class PageMain extends PureComponent {
     renderContent() {
         let topDataSource = this.props.mainStore.topDataSource;
         let dataSource = this.props.mainStore.dataSource;
+        let isNightMode = this.props.mainStore.nightMode;
         if (true) {
             return (
                 <SectionList
@@ -129,9 +135,9 @@ class PageMain extends PureComponent {
                     }/>}
                     onRefresh={this._onRefresh}
                     refreshing={this.props.mainStore.isRefreshing}
-                    renderItem={({item}) => <ListItem data={item} navigation={this.props.navigation}/>}
+                    renderItem={({item}) => <ListItem data={item} navigation={this.props.navigation} nightMode={isNightMode}/>}
                     renderSectionHeader={({section}) => {
-                        return <Text style={styles.itemSectionStyle}>{section.key}</Text>
+                        return <Text style={[styles.itemSectionStyle,{color:isNightMode?'#BEBEBE':'#707070'}]}>{section.key}</Text>
                     }}
                     sections={dataSource}
                     keyExtractor={(item, index) => "index" + index + item}
@@ -204,7 +210,7 @@ class PageMain extends PureComponent {
                        source={require('../imgs/message_main.png')}/>
             </TouchableOpacity>,
             <TouchableOpacity key={'r2'} onPress={() => {
-                DeviceEventEmitter.emit('modalDidChanged',{visible:true,menuItems:this.menuItems});
+                DeviceEventEmitter.emit('modalDidChanged',{visible:true,menuItems:this.menuItems,});
                 this.setState({
                     showMore: !this.state.showMore,
                 });

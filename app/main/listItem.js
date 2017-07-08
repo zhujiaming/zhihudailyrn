@@ -17,6 +17,7 @@ class ListItem extends PureComponent {
     static defaultProps = {
         data: null,
         navigation: null,
+        nightMode:false,
     }
 
     constructor(props) {
@@ -28,9 +29,9 @@ class ListItem extends PureComponent {
         return (<TouchableOpacity style={styles.container} activeOpacity={0.8} onPress={() => {
             this.props.navigation.navigate('PageNewsDetail', {data: this.props.data});
         }}>
-            <View style={styles.innerContainer}>
+            <View style={[styles.innerContainer,{backgroundColor:this.props.nightMode?'#404040':'#fff'}]}>
                 <View style={{flex: 1, height: contentHeight}}>
-                    <Text style={styles.itemTitleStyle}>{this.props.data.title}</Text>
+                    <Text style={[styles.itemTitleStyle,{color:this.props.nightMode?'#F3F3F3':'#000'}]}>{this.props.data.title}</Text>
                 </View>
                 {imgUri ? <Image style={styles.itemImgStyle} resizeMode='cover'
                                  source={{uri: imgUri}}/> : null}

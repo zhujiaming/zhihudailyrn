@@ -3,11 +3,12 @@
  */
 'use strict';
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image, TouchableOpacity, ToastAndroid, Platform} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableOpacity, ToastAndroid, Platform,StatusBar} from 'react-native';
 import {CommonStyles} from './index';
 
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56; //topBar的高度
 const APPBAR_BACKGROUND_COLOR = 'rgb(27,163,234)';   //topBar的背景色
+const APPBAR_BACKGROUND_COLOR_NIGHT = '#212121';   //topBar的背景色
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
 
 class Header extends Component {
@@ -15,8 +16,8 @@ class Header extends Component {
     static defaultProps = {
         renderLeft: null,
         renderRight: null,
-        backgroundColor:APPBAR_BACKGROUND_COLOR,
-        elevation:4
+        elevation:4,
+        nightMode:false,
     };
 
     constructor(props) {
@@ -24,7 +25,8 @@ class Header extends Component {
     }
 
     render() {
-        return (<View style={[styles.headContainerStyle,{backgroundColor:this.props.backgroundColor,elevation:this.props.elevation}]}>
+        let nightMode = this.props.nightMode;
+        return (<View style={[styles.headContainerStyle,{backgroundColor:this.props.nightMode?APPBAR_BACKGROUND_COLOR_NIGHT:APPBAR_BACKGROUND_COLOR,elevation:this.props.elevation}]}>
             <View style={styles.headViewLeft}>
                 {this.props.renderLeft && this.props.renderLeft()}
             </View>

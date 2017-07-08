@@ -18,7 +18,7 @@ export function newsDetailReducer(state = initalState, action) {
                 isLoading: true,
             }
         case actionTypes.ACTION_END_REFRESH:
-            action.data.body = Utils.getHtml(action.data.body,action.data.css);//html处理
+            action.data.body = Utils.getHtml(action.data.body,action.data.css,action.nightMode);//html处理
             return {
                 ...state,
                 isLoading: false,
@@ -41,11 +41,11 @@ export const actionTypes = {
     ACTION_GET_EXTRAS:'detailNews:get_extras',
 }
 
-export function aciton_getDetailNewsData(newsId) {
+export function aciton_getDetailNewsData(newsId,nightMode = false) {
     return async (dispatch) => {
         dispatch({type: actionTypes.ACTION_START_REFRESH});
         let responseJson = await  getDetailNews(newsId);
-        dispatch({type: actionTypes.ACTION_END_REFRESH, data: /*detailNewsData*/responseJson});
+        dispatch({type: actionTypes.ACTION_END_REFRESH, data: /*detailNewsData*/responseJson,nightMode:nightMode});
     };
 
 }export function aciton_getDetailNewsExtra(newsId) {
