@@ -78,16 +78,15 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 
 #### 安装配置
 ---
-1. clone the repo
+ 1. clone the repo
 
 > git clone https://git.oschina.net/null_711_9174/zhihudailyrn.git
-
 >cd zhihudailyrn
 
-2. install dependencies 
+ 2. install dependencies 
 > npm install
 
-3. run on android 
+ 3. run on android 
 > react-native run-android
 
 #### 最后
