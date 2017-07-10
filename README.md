@@ -39,31 +39,36 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 （默默的感谢下该知乎日报API的提供者，虽说接口不是很多，但正是有了这些API接口，才使得这个rn项目至少像那么回事，有动力写下去啦😉，有需要的可以网上搜搜或者联系我。）
 #### ScreenShot
 ---
-（截图图片压缩了，效果不是很清晰，可直接安装项目根目录下apk运行）
-
-![欢迎页  首页](http://upload-images.jianshu.io/upload_images/1948083-dad44eebcedaf8d0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-
-
-
-![详情页 评论页](http://upload-images.jianshu.io/upload_images/1948083-ac42b517d585a40c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![欢迎页-首页](http://upload-images.jianshu.io/upload_images/1948083-1406060e235ba90b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
 
 
 
-
-
-![登录页 抽屉页](http://upload-images.jianshu.io/upload_images/1948083-bcfd7a494fd559a1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![22222.jpg](http://upload-images.jianshu.io/upload_images/1948083-904c2d7d8d3688a5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
 
 
 
 
 
-![专题页](http://upload-images.jianshu.io/upload_images/1948083-db9161e17e36a27e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![3333.jpg](http://upload-images.jianshu.io/upload_images/1948083-50d429b86aa68b29.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
 
+
+
+
+
+
+
+![4444.jpg](http://upload-images.jianshu.io/upload_images/1948083-e42aab5516007d1e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
+
+
+#### 下载安装
+---
+![](http://upload-images.jianshu.io/upload_images/1948083-6016c312d545574a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/120)
 
 
 #### 第三方依赖
