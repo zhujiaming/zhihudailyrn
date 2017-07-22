@@ -10,6 +10,8 @@ import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './rootReducer';
 import AppRoute from './routes';
 import thunk from 'redux-thunk';
+import codePush from 'react-native-code-push';
+import {ToastAndroid} from'react-native';
 
 
 const rootStore = createStore(
@@ -26,6 +28,11 @@ class App extends Component {
         return (<Provider store={rootStore}>
             <AppRoute/>
         </Provider>);
+    }
+
+    componentDidMount(){
+        codePush.sync();
+        ToastAndroid.show("傻傻傻傻",ToastAndroid.SHORT);
     }
 }
 
