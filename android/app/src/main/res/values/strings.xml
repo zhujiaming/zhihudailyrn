@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">g4KhABNW_NnsXKBj_948YqB3BzFt638459c6-c328-4312-b3de-02f20b4bb2e0</string>
     <string name="app_name">知乎日报(RN版)</string>
 </resources>
