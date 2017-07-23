@@ -5,6 +5,7 @@ import {StackNavigator, DrawerNavigator, NavigationActions} from 'react-navigati
 import React, {Component} from 'react';
 import {View, Modal, Text, DeviceEventEmitter,StatusBar} from 'react-native';
 import {CusModal,CommonStyles} from 'kit';
+import codePush from 'react-native-code-push'
 import PageMain from './main/index';
 import MainDraw  from './draw/index';
 import NewsDetail  from './detail/index';
@@ -97,7 +98,8 @@ class AppRoute extends Component {
         });
         this.statusBarNightModeListenner = DeviceEventEmitter.addListener('statusBarDidChanged',(nightMode)=>{
             StatusBar.setBackgroundColor(nightMode?'#212121':'rgb(27,163,234)');
-        })
+        });
+        codePush.sync();
     }
 
     componentWillUnmount() {
