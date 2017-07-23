@@ -1,7 +1,9 @@
-##### 
+#### 下载安装( for android)
+---
+![](https://www.pgyer.com/app/qrcode/Z0xA)
 #### 简介
 ---
-> 这是一款使用ReactNative技术写的模仿《知乎日报》的客户端。
+> 这是一款使用ReactNative技术写的高仿《知乎日报》的客户端。
 主要目的为学习ReactNative，掌握其API使用及原理等知识。
 >  主要实现了《知乎日报》App的首页，详情页，评论页，专题页，抽屉页，登录页，主编页等页面的绘制与数据处理，以及日夜切换模式。（目前仅实现了Android端的适配。。）几乎90%+的代码在ReactNative端编写。
 
@@ -36,7 +38,7 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 
 其他方面涉及到一些自定义View，各类ListView的使用，页面的绘制，一些效果的实现，以及遇到的一些坑等，会在其他笔记文章中记录及分析。
 
-（默默的感谢下该知乎日报API的提供者，虽说接口不是很多，但正是有了这些API接口，才使得这个rn项目至少像那么回事，有动力写下去啦😉，有需要的可以网上搜搜或者联系我。）
+（默默的感谢下该知乎日报API的提供者）
 #### ScreenShot
 ---
 
@@ -64,11 +66,6 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 
 
 ![4444.jpg](http://upload-images.jianshu.io/upload_images/1948083-e42aab5516007d1e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
-
-
-#### 下载安装
----
-![](http://upload-images.jianshu.io/upload_images/1948083-6016c312d545574a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/120)
 
 
 #### 第三方依赖
@@ -106,4 +103,4 @@ web网页显示确实在当前RN版本中存在着一些坑，比如rn的webView
 
 该项目的目的仅供学习交流，如果有侵犯他人权益，还望指出。
 
-邮箱：ah_zjm@163.com
+联系：ah_zjm@163.com / 771407650
