@@ -37,6 +37,14 @@ class Login extends PureComponent {
             <Image source={require('../imgs/bg_blue_sky2.png')} style={{...StyleSheet.absoluteFillObject, flex: 1}}/>
             <Image source={require('../imgs/splash_logo.png') } style={{width: 180, height: 50}}
                    resizeMode={'contain'}/>
+
+            <TouchableOpacity onPress={() => {
+                this.props.navigation.navigate('PageZhihuLogin');
+            }}>
+                <View style={[styles.btnStyle, {marginTop: 60}]}>
+                    <Text style={{color: '#1C86EE', fontSize: 18}}>知乎账户登录</Text>
+                </View>
+            </TouchableOpacity>
             <Text style={{color: '#D0F1FF', marginTop: 80, marginBottom: 30, fontSize: 18}}>使用微博登录</Text>
 
             <TouchableOpacity onPress={() => {

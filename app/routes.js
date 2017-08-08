@@ -10,6 +10,7 @@ import MainDraw  from './draw/index';
 import NewsDetail  from './detail/index';
 import NewsComments from './comment/index';
 import Login from './login/index';
+import ZhihuLogin from './zhihuLogin/index';
 import PageEditList from './editor/editlist';
 import PageEditorDetail from './editor/detail';
 /*首页带抽屉的Navigator*/
@@ -27,6 +28,7 @@ const stackRouteConfigs = {
     PageNewsDetail: {screen: NewsDetail},
     PageNewsComments: {screen: NewsComments},
     PageLogin: {screen: Login},
+    PageZhihuLogin: {screen: ZhihuLogin},
     PageEditList: {screen: PageEditList},
     PageEditorDetail: {screen: PageEditorDetail},
 };
