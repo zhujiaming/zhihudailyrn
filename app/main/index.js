@@ -94,7 +94,7 @@ class PageMain extends PureComponent {
             case 'theme':
                 return <PageMainDaily themeData={this.props.mainStore.themeData} navigation={this.props.navigation} nightMode ={nightMode}/>;
             default:
-                return (<View style={[styles.container,{backgroundColor:nightMode?'#343434':'#F3F3F3'}]}>
+                return (<View style={[styles.container,{backgroundColor:nightMode?'#34343400':'#F3F3F300'}]}>
                     <Header
                         renderLeft={this.renderTopBarLeft}
                         renderRight={this.renderTopBarRight}

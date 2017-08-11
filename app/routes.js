@@ -3,7 +3,7 @@
  */
 import {StackNavigator, DrawerNavigator, NavigationActions} from 'react-navigation';
 import React, {Component} from 'react';
-import {View, Modal, Text, DeviceEventEmitter,StatusBar} from 'react-native';
+import {View, Modal, Text, DeviceEventEmitter,Platform,StatusBar} from 'react-native';
 import {CusModal,CommonStyles} from 'kit';
 import PageMain from './main/index';
 import MainDraw  from './draw/index';
@@ -97,14 +97,20 @@ class AppRoute extends Component {
                 modalProps: modalProps,
             });
         });
-        this.statusBarNightModeListenner = DeviceEventEmitter.addListener('statusBarDidChanged',(nightMode)=>{
-            StatusBar.setBackgroundColor(nightMode?'#212121':'rgb(27,163,234)');
-        })
+        if(Platform.OS === 'android'){
+            this.statusBarNightModeListenner = DeviceEventEmitter.addListener('statusBarDidChanged',(nightMode)=>{
+                StatusBar.setBackgroundColor(nightMode?'#212121':'rgb(27,163,234)');
+            });
+        }
+        
     }
 
     componentWillUnmount() {
         this.modalDidChangedListenner.remove();
-        this.statusBarNightModeListenner.remove();
+        if(Platform.OS === 'android'){
+            this.statusBarNightModeListenner.remove();
+        }
+        
     }
 }
 

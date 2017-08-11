@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+/**
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -51,3 +51,9 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('ZhiHuDailyRN', () => ZhiHuDailyRN);
+
+*/
+import {AppRegistry} from 'react-native';
+import App from './app/index'
+
+AppRegistry.registerComponent('ZhiHuDailyRN', () => App);
