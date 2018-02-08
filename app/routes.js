@@ -3,13 +3,14 @@
  */
 import {StackNavigator, DrawerNavigator, NavigationActions} from 'react-navigation';
 import React, {Component} from 'react';
-import {View, Modal, Text, DeviceEventEmitter,StatusBar} from 'react-native';
+import {View, Modal, Text, DeviceEventEmitter,Platform,StatusBar} from 'react-native';
 import {CusModal,CommonStyles} from 'kit';
 import PageMain from './main/index';
 import MainDraw  from './draw/index';
 import NewsDetail  from './detail/index';
 import NewsComments from './comment/index';
 import Login from './login/index';
+import ZhihuLogin from './zhihuLogin/index';
 import PageEditList from './editor/editlist';
 import PageEditorDetail from './editor/detail';
 /*首页带抽屉的Navigator*/
@@ -27,6 +28,7 @@ const stackRouteConfigs = {
     PageNewsDetail: {screen: NewsDetail},
     PageNewsComments: {screen: NewsComments},
     PageLogin: {screen: Login},
+    PageZhihuLogin: {screen: ZhihuLogin},
     PageEditList: {screen: PageEditList},
     PageEditorDetail: {screen: PageEditorDetail},
 };
@@ -95,14 +97,20 @@ class AppRoute extends Component {
                 modalProps: modalProps,
             });
         });
-        this.statusBarNightModeListenner = DeviceEventEmitter.addListener('statusBarDidChanged',(nightMode)=>{
-            StatusBar.setBackgroundColor(nightMode?'#212121':'rgb(27,163,234)');
-        })
+        if(Platform.OS === 'android'){
+            this.statusBarNightModeListenner = DeviceEventEmitter.addListener('statusBarDidChanged',(nightMode)=>{
+                StatusBar.setBackgroundColor(nightMode?'#212121':'rgb(27,163,234)');
+            });
+        }
+        
     }
 
     componentWillUnmount() {
         this.modalDidChangedListenner.remove();
-        this.statusBarNightModeListenner.remove();
+        if(Platform.OS === 'android'){
+            this.statusBarNightModeListenner.remove();
+        }
+        
     }
 }
 

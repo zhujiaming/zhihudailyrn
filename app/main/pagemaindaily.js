@@ -136,7 +136,7 @@ class PageMainDaily extends PureComponent {
         let headTitle = this.props.themeData.description;
         let nightMode = this.props.nightMode;
         return (<View style={styles.listHeadStyle}>
-            <View style={{backgroundColor: '#4A4A4A'}}>
+            <View style={{backgroundColor: '#4A4A4A00'}}>
                 <Image style={{width: screenWidth, height: listHeadHeight}}
                        source={{uri: headImgUri}}/>
                 <View style={{...StyleSheet.absoluteFillObject, flex: 1, justifyContent: 'flex-end'}}>

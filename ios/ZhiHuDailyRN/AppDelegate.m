@@ -9,7 +9,7 @@
 
 #import "AppDelegate.h"
 
-#import <React/RCTBundleURLProvider.h>
+//#import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
 @implementation AppDelegate
@@ -18,7 +18,9 @@
 {
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+  NSString * strUrl = @"http://127.0.0.1:8081/index.ios.bundle?platform=ios&dev=true";
+  jsCodeLocation = [NSURL URLWithString:strUrl];
+//  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"ZhiHuDailyRN"

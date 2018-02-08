@@ -12,9 +12,12 @@ import {
     TouchableOpacity,
     Dimensions,
     ToastAndroid,
+    ToastIos,
+    WebView,
     PixelRatio,
     InteractionManager,
     DeviceEventEmitter,
+    Platform,
 } from 'react-native';
 import Svg, {LinearGradient, Rect, Defs, Stop} from 'react-native-svg';
 import {Header, CommonStyles, CusWebView,Loading} from 'kit';
@@ -88,9 +91,47 @@ class NewsDetail extends PureComponent {
             {isSameNews && this.props.newDetailStore.newsData.image ? this.renderCoverHeader() : null}
             {this.renderHeader(isSameNews)}
         </View>);
+        
         //    DeviceEventEmitter.emit('modalDidChanged', {visible: true, renderCusChild:this._renderShareDialog()});
     }
+/*
+    render() {
+        return (
+          <View style={{flex:1}}>
+            <Text style={{height:40}}>简单的网页显示</Text>
+            <WebView style={styles.webview_style}
+                     source={{uri:'https://github.com/l123456789jy'}}
+                     startInLoadingState={true}
+                     domStorageEnabled={true}
+                     javaScriptEnabled={true}
+            >
+            </WebView>
+          </View>
+        );
+    }
 
+
+    render() {
+        let targetId = this.props.navigation.state.params.data.id;
+        let storeId = this.props.newDetailStore.newsData.id;
+        let isSameNews = targetId === storeId;
+
+        let htmlContent = this.props.newDetailStore.newsData.body;
+        return (
+          <View style={{flex:1}}>
+            <Text style={{height:40}}>简单的网页显示</Text>
+            <WebView style={styles.webview_style}
+                     source={{html:htmlContent}}
+                     scalesPageToFit={true}
+            >
+            </WebView>
+          </View>
+        );
+        
+        //    DeviceEventEmitter.emit('modalDidChanged', {visible: true, renderCusChild:this._renderShareDialog()});
+    }
+    
+*/
     _renderShareDialog() {
         let itemStyle = {justifyContent: 'center', alignItems: 'center', width: (CommonStyles.modalWith / 3.3)};
         let imgIconStyle = {width: 50, height: 50};
@@ -137,7 +178,7 @@ class NewsDetail extends PureComponent {
         // console.log("图片地址：", imgUrl);
         return <View
             ref="coverParentView"
-            style={{...StyleSheet.absoluteFillObject, height: headCoverHeight, backgroundColor: '#fff'}}>
+            style={{...StyleSheet.absoluteFillObject, height: headCoverHeight, backgroundColor: '#fff0'}}>
             <View
                 ref="coverChildView"
                 style={{
@@ -185,6 +226,37 @@ class NewsDetail extends PureComponent {
 
     renderContent() {
         let htmlContent = this.props.newDetailStore.newsData.body;
+        if (Platform.OS === 'ios') {
+            return htmlContent ? (<View style={{flex: 1}}>
+                <WebView style={styles.webView}
+                         source={{html:htmlContent}}
+                         scalesPageToFit={true}
+                >
+                </WebView>
+            </View>) : null;
+        } else {
+            return htmlContent ? (<View style={{flex: 1}}>
+                <CusWebView
+                    html={htmlContent}
+                    onScroll={(dy) => this.onScroll(dy)}
+                    style={styles.webView}
+                />
+            </View>) : null;
+        }
+        
+    }
+
+    /*
+    renderContent() {
+        if (Platform.OS === 'ios') {
+            this.renderContentIOS();
+        } else {
+            this.renderContentAndroid();
+        }
+    }
+
+    renderContentAndroid() {
+        let htmlContent = this.props.newDetailStore.newsData.body;
         return htmlContent ? (<View style={{flex: 1}}>
             <CusWebView
                 html={htmlContent}
@@ -194,6 +266,17 @@ class NewsDetail extends PureComponent {
         </View>) : null;
     }
 
+    renderContentIOS() {
+        let htmlContent = this.props.newDetailStore.newsData.body;
+        return htmlContent ? (<View style={{flex: 1}}>
+            <WebView style={styles.webView}
+                     source={{html:htmlContent}}
+                     scalesPageToFit={true}
+            >
+            </WebView>
+        </View>) : null;
+    }
+*/
     renderHeader(isSame) {
         let extrasData = this.props.newDetailStore.extrasData;
         let comments = extrasData.comments;
